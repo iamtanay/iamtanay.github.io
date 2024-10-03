@@ -1,0 +1,30 @@
+.social-sidebar {
+    position: fixed; /* Fixes the sidebar in place */
+    left: 20px; /* Distance from the left */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for true centering */
+    background: #fff; /* Background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    padding: 10px; /* Padding inside the box */
+    z-index: 1000; /* Ensure it stays on top */
+  }
+  
+  .social-sidebar ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+  }
+  
+  .social-sidebar li {
+    margin: 10px 0; /* Space between icons */
+  }
+  
+  .social-sidebar a {
+    color: #007bff; /* Icon color */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .social-sidebar a:hover {
+    color: #0056b3; /* Darker color on hover */
+  }  

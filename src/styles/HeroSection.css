@@ -1,0 +1,42 @@
+.hero {
+  height: 60vh; /* Maintain reduced height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 240, 240, 0.9) 100%), /* Light gradient */
+    linear-gradient(45deg, rgba(0, 123, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(0, 123, 255, 0.05) 75%, transparent 100%); /* Very subtle blue texture */
+  background-size: 150px 150px; /* Increase the size to add space between repetitions */
+  background-position: center; /* Center the background */
+}
+
+.hero-content {
+  text-align: center;
+  margin-top: 0; /* Center the content */
+  padding: 0 20px; /* Padding for responsiveness */
+}
+
+.hero h1 {
+  font-size: 40px; /* Adjust font size */
+  margin: 10px 0; /* Reduce margin above and below the heading */
+}
+
+.hero h1 span {
+  color: #007bff; /* Retain blue color for emphasis */
+}
+
+.cta-button {
+  padding: 10px 20px;
+  background: #007bff; /* Change the button background to blue */
+  color: #fff; /* Change text color to white for contrast */
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+  margin-top: 10px; /* Margin for spacing between button and text */
+  cursor: pointer; /* Ensure hand cursor on hover */
+}
+
+.cta-button:hover {
+  background: #0056b3; /* Darker blue on hover */
+  color: #fff; /* Keep text color white on hover */
+}

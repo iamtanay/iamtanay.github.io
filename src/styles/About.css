@@ -1,0 +1,17 @@
+.about {
+    padding: 50px;
+    background-color: #f8f9fa;
+    text-align: center;
+  }
+  
+  .about h2 {
+    margin-bottom: 20px;
+    font-size: 32px;
+    color: #007bff;
+  }
+  
+  .about p {
+    font-size: 18px;
+    color: #333;
+  }
+  
