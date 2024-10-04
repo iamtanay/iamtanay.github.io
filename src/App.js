@@ -9,7 +9,8 @@ import Projects from './components/Projects';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import SocialSidebar from './components/SocialSidebar'; // Import the sidebar
+import SocialSidebar from './components/SocialSidebar';
+import ScrollToTopButton from './components/ScrollToTopButton';
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
       <Projects />
       <Contact />
       <Footer />
-      <SocialSidebar /> {/* Include the social sidebar */}
+      <SocialSidebar />
+      <ScrollToTopButton />
     </div>
   );
 }
