@@ -6,7 +6,7 @@ const About = () => {
     <section id="about" className="about">
       <h2>About Me</h2>
       <p>
-        I am <strong>Tanay Kashyap</strong>, a passionate and results-driven Software Developer with a solid foundation in computer science. I hold a B.Tech in Computer Science from <strong>NMIMS, Mumbai</strong>, where I honed my skills in programming and software development. My journey in tech has been driven by a desire to create impactful software solutions and enhance user experiences.
+        I am <strong>Tanay</strong>, a passionate and results-driven Software Developer with a solid foundation in computer science. I hold a B.Tech in Computer Science from <strong>NMIMS, Mumbai</strong>, where I honed my skills in programming and software development. My journey in tech has been driven by a desire to create impactful software solutions and enhance user experiences.
       </p>
       <p>
         With extensive experience in <strong>C++</strong>, <strong>Python</strong>, and the <strong>MERN</strong> stack, I specialize in developing scalable applications and robust backend systems.

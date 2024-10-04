@@ -29,7 +29,7 @@ const Education = () => {
           <h3>Certifications</h3>
           <ul>
             <li>STAR Labs Satellite Masterclass</li>
-            <li>CFA Level 1</li>
+            <li>CFA(Chartered Financial Analyst USA) Level 1</li>
           </ul>
         </div>
 

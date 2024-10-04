@@ -1,46 +1,63 @@
 .contact {
-    padding: 50px;
-    background-color: #fff;
-    text-align: center;
-  }
-  
-  .contact h2 {
-    font-size: 32px;
-    color: #007bff;
-    margin-bottom: 20px;
-  }
-  
-  .contact form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .contact input, .contact textarea {
-    width: 50%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  .contact button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .contact button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Mobile styles for contact form */
+  padding: 50px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 32px;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.google-form-container {
+  width: 80%;
+  margin: 0 auto; /* Center the form container */
+  border: 1px solid #ddd; /* Optional: add a border around the container */
+  border-radius: 8px; /* Round the corners */
+  overflow: hidden; /* Hide overflow */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow */
+}
+
+/* Style the iframe */
+iframe {
+  width: 100%;
+  height: 600px; /* Set a height for the iframe */
+  border: none; /* Remove the default border */
+}
+
+/* Style the scrollbar */
+.google-form-container {
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* WebKit scrollbar styling */
+.google-form-container::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+}
+
+.google-form-container::-webkit-scrollbar-track {
+  background: transparent; /* Background color of the scrollbar track */
+}
+
+.google-form-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 123, 255, 0.6); /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+/* Show scrollbar on hover */
+.google-form-container:hover::-webkit-scrollbar-thumb {
+  background: rgba(0, 123, 255, 0.8); /* Darker color when hovered */
+}
+
+/* Mobile Styles */
 @media (max-width: 768px) {
-  .contact input, .contact textarea {
-    width: 95%; /* Make textboxes take almost the full width of the screen */
-    margin: 10px auto; /* Add space and center the textboxes */
+  .google-form-container {
+    width: 95%; /* Use more width on mobile */
+    height: 400px; /* Adjust height for mobile */
+  }
+
+  iframe {
+    height: 100%; /* Make iframe fill the container */
   }
 }

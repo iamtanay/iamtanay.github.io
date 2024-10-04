@@ -1,6 +1,6 @@
 .social-sidebar {
     position: fixed; /* Fixes the sidebar in place */
-    left: 20px; /* Distance from the left */
+    left: 15px; /* Distance from the left */
     top: 50%; /* Center vertically */
     transform: translateY(-50%); /* Adjust for true centering */
     background: #fff; /* Background color */
@@ -33,8 +33,8 @@
 @media (max-width: 768px) {
   .social-sidebar {
     position: fixed; /* Keep it fixed */
-    left: auto; /* Adjust position for mobile */
-    right: 10px; /* Place it on the right side */
+    left: 10px; /* Adjust position for mobile */
+    right: auto; /* Place it on the right side */
     top: 30%; /* Lower it slightly */
     transform: none; /* Disable vertical centering for mobile */
   }
