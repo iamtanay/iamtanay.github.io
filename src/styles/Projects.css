@@ -1,42 +1,54 @@
 .projects {
-    padding: 50px;
-    background-color: #f8f9fa;
-    text-align: center;
-  }
-  
-  .projects h2 {
-    font-size: 32px;
-    color: #007bff;
-    margin-bottom: 20px;
-  }
-  
+  padding: 50px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.projects h2 {
+  font-size: 32px;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.project-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project-card {
+  width: 30%; /* Width for desktop */
+  background: #fff;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.project-card h3 {
+  font-size: 24px;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.project-card a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.project-card a:hover {
+  color: #0056b3;
+}
+
+/* Mobile styles for projects section */
+@media (max-width: 768px) {
   .project-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column; /* Stack project cards vertically */
+    align-items: center; /* Center the cards */
   }
-  
+
   .project-card {
-    width: 30%;
-    background: #fff;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Make each project div take up most of the screen on mobile */
+    margin: 10px auto; /* Center each project div */
   }
-  
-  .project-card h3 {
-    font-size: 24px;
-    color: #007bff;
-    margin-bottom: 10px;
-  }
-  
-  .project-card a {
-    text-decoration: none;
-    color: #007bff;
-  }
-  
-  .project-card a:hover {
-    color: #0056b3;
-  }
-  
+}

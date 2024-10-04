@@ -37,3 +37,10 @@
     background-color: #0056b3;
   }
   
+  /* Mobile styles for contact form */
+@media (max-width: 768px) {
+  .contact input, .contact textarea {
+    width: 95%; /* Make textboxes take almost the full width of the screen */
+    margin: 10px auto; /* Add space and center the textboxes */
+  }
+}

@@ -27,4 +27,19 @@
   
   .social-sidebar a:hover {
     color: #0056b3; /* Darker color on hover */
-  }  
+  }
+  
+  /* Mobile styles for social sidebar */
+@media (max-width: 768px) {
+  .social-sidebar {
+    position: fixed; /* Keep it fixed */
+    left: auto; /* Adjust position for mobile */
+    right: 10px; /* Place it on the right side */
+    top: 30%; /* Lower it slightly */
+    transform: none; /* Disable vertical centering for mobile */
+  }
+
+  .social-sidebar ul {
+    padding: 5px; /* Adjust padding for smaller screens */
+  }
+}

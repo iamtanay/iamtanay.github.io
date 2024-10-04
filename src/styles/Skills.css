@@ -43,3 +43,15 @@
   color: #007bff;
   margin-bottom: 10px;
 }
+
+/* Mobile styles for skills section */
+@media (max-width: 768px) {
+  .skills-content {
+    flex-direction: column; /* Stack skills vertically on mobile */
+  }
+
+  .skill-item {
+    width: 90%; /* Take up most of the screen width */
+    margin: 10px auto; /* Center each skill and add spacing */
+  }
+}

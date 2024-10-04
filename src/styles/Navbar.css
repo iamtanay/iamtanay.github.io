@@ -2,47 +2,78 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 30px; /* Add padding for better spacing */
-  background-color: #fff; /* White background for navbar */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  position: sticky; /* Keep navbar at the top when scrolling */
-  top: 0; /* Positioning */
-  z-index: 1000; /* Ensure it's on top of other elements */
+  padding: 10px 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo {
-  font-size: 24px; /* Logo font size */
-  font-weight: bold; /* Bold logo text */
-  color: #007bff; /* Blue color for logo */
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
 }
 
 .nav-links {
   display: flex;
-  list-style: none; /* Remove bullet points */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li {
-  margin-left: 30px; /* Space between navbar items */
+  margin-left: 30px;
 }
 
 .nav-links a {
-  text-decoration: none; /* Remove underline from links */
-  color: #333; /* Dark text color for links */
-  font-size: 18px; /* Font size for links */
-  transition: color 0.3s ease; /* Smooth transition for hover effects */
-  cursor: pointer; /* Ensure hand cursor on hover */
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  transition: color 0.3s ease;
+  cursor: pointer;
 }
 
 .nav-links a:hover {
-  color: #007bff; /* Change color on hover */
+  color: #007bff;
 }
 
-/* Active link styles */
-.nav-links a.active {
-  font-weight: bold; /* Make active link bold */
-  color: #007bff; /* Change color for active link */
-  border-bottom: 2px solid #007bff; /* Active link indicator */
-  padding-bottom: 5px; /* Space between text and border */
+/* Hamburger menu for mobile */
+.hamburger {
+  display: none; /* Hide on larger screens */
+  cursor: pointer;
+  color: #333;
+}
+
+/* Mobile menu visibility */
+.nav-links.mobile {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.nav-links.mobile li {
+  margin: 10px 0;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Hide the regular navbar links on mobile */
+  }
+
+  .hamburger {
+    display: block; /* Show the hamburger icon on mobile */
+  }
+
+  .nav-links.mobile {
+    display: flex; /* Show the menu when it's toggled */
+  }
 }
