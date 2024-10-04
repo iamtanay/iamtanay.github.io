@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/portfolio-tanay/static/css/main.0c179fb0.css",
+    "main.js": "/portfolio-tanay/static/js/main.a145c6ec.js",
+    "static/js/453.c0e675b4.chunk.js": "/portfolio-tanay/static/js/453.c0e675b4.chunk.js",
+    "index.html": "/portfolio-tanay/index.html",
+    "main.0c179fb0.css.map": "/portfolio-tanay/static/css/main.0c179fb0.css.map",
+    "main.a145c6ec.js.map": "/portfolio-tanay/static/js/main.a145c6ec.js.map",
+    "453.c0e675b4.chunk.js.map": "/portfolio-tanay/static/js/453.c0e675b4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c179fb0.css",
+    "static/js/main.a145c6ec.js"
+  ]
+}
