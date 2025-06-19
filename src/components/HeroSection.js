@@ -6,12 +6,12 @@ import { FaChevronDown } from 'react-icons/fa';
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-slate-900">
       {/* Animated background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
       </div>
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
@@ -26,7 +26,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="text-primary-400 text-lg md:text-xl font-medium tracking-wider"
+            className="text-blue-400 text-lg md:text-xl font-medium tracking-wider"
           >
             Hello, I'm
           </motion.p>
@@ -73,7 +73,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 2.2 + index * 0.1, duration: 0.5 }}
-                className="px-4 py-2 glass rounded-full border border-primary-500/30 hover:border-primary-400/50 transition-all duration-300"
+                className="px-4 py-2 glass rounded-full border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300"
               >
                 {tech}
               </motion.span>
@@ -91,10 +91,10 @@ const HeroSection = () => {
               to="contact"
               smooth={true}
               duration={500}
-              className="group relative inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-primary-600 to-purple-600 rounded-full hover:from-primary-500 hover:to-purple-500 transition-all duration-300 cursor-pointer overflow-hidden"
+              className="group relative inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-500 hover:to-purple-500 transition-all duration-300 cursor-pointer overflow-hidden"
             >
               <span className="relative z-10">Let's Connect</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <motion.div
                 className="absolute inset-0 bg-white/20"
                 initial={{ x: '-100%' }}
@@ -115,7 +115,7 @@ const HeroSection = () => {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+            className="text-gray-400 hover:text-blue-400 transition-colors duration-300"
           >
             <FaChevronDown size={24} />
           </motion.div>
