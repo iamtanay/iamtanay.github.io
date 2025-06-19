@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles/App.css';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import About from './components/About';
@@ -11,10 +10,12 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import SocialSidebar from './components/SocialSidebar';
 import ScrollToTopButton from './components/ScrollToTopButton';
+import ParticleBackground from './components/ParticleBackground';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App relative">
+      <ParticleBackground />
       <Navbar />
       <HeroSection />
       <About />

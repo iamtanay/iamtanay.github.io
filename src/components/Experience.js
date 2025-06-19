@@ -1,42 +1,158 @@
 import React from 'react';
-import '../styles/Experience.css';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
 
 const Experience = () => {
+  const [ref, inView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  });
+
+  const experiences = [
+    {
+      company: 'NuAIg, Indore',
+      position: 'Software Engineer',
+      period: 'September 2024 - Present',
+      description: [
+        'Developed solutions using advanced Python for AI-driven projects.',
+        'Focused on optimization and scaling for high-performance applications.',
+      ],
+      color: 'from-blue-500 to-cyan-500',
+    },
+    {
+      company: 'Shourya Packaging, Indore',
+      position: 'Director',
+      period: 'April 2020 - April 2024',
+      description: [
+        'Led a family-owned packaging company serving pharmaceutical industries.',
+        'Optimized production workflows, increasing efficiency by 20%.',
+        'Introduced modern production techniques, improving product quality and customer satisfaction.',
+      ],
+      color: 'from-purple-500 to-pink-500',
+    },
+    {
+      company: 'Alepo Technologies, Mumbai',
+      position: 'Software Engineer',
+      period: 'June 2018 - March 2020',
+      description: [
+        'Worked on 4G/5G telecom projects, developing components with C++.',
+        'Developed C++ libraries for JSON parsing, Couchbase DB interactions, and YAML-based server generation.',
+        'Collaborated with telecom giants like Etisalat and ACT, contributing to mission-critical applications.',
+      ],
+      color: 'from-green-500 to-teal-500',
+    },
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: 'easeOut',
+      },
+    },
+  };
+
   return (
-    <section id="experience" className="experience">
-      <h2>Experience</h2>
-      <div className="experience-content">
-        
-        <div className="job">
-          <h3>NuAIg, Indore</h3>
-          <p><strong>Software Engineer</strong> - September 2024 - Present</p>
-          <ul>
-            <li>Developed solutions using advanced Python for AI-driven projects.</li>
-            <li>Focused on optimization and scaling for high-performance applications.</li>
-          </ul>
-        </div>
+    <section id="experience" className="min-h-screen flex items-center py-20 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
+      </div>
 
-        <div className="job">
-          <h3>Shourya Packaging, Indore</h3>
-          <p><strong>Director</strong> - April 2020 - April 2024</p>
-          <ul>
-            <li>Led a family-owned packaging company serving pharmaceutical industries.</li>
-            <li>Optimized production workflows, increasing efficiency by 20%.</li>
-            <li>Introduced modern production techniques, improving product quality and customer satisfaction.</li>
-          </ul>
-        </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+        >
+          {/* Section Header */}
+          <motion.div
+            variants={itemVariants}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
+              Experience
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              My professional journey through various roles and technologies
+            </p>
+          </motion.div>
 
-        <div className="job">
-          <h3>Alepo Technologies, Mumbai</h3>
-          <p><strong>Software Engineer</strong> - June 2018 - March 2020</p>
-          <ul>
-            <li>Worked on 4G/5G telecom projects, developing components with C++.</li>
-            <li>Developed C++ libraries for JSON parsing, Couchbase DB interactions, and YAML-based server generation.</li>
-            <li>Collaborated with telecom giants like Etisalat and ACT, contributing to mission-critical applications.</li>
-          </ul>
-        </div>
+          {/* Timeline */}
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-purple-500"></div>
 
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className={`relative flex items-center mb-12 ${
+                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                }`}
+              >
+                {/* Timeline dot */}
+                <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-primary-500 rounded-full border-4 border-dark-900 z-10"></div>
 
+                {/* Content card */}
+                <motion.div
+                  className={`ml-16 md:ml-0 md:w-5/12 ${
+                    index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
+                  }`}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="glass rounded-2xl p-6 border border-primary-500/20 hover:border-primary-400/40 transition-all duration-300">
+                    {/* Company and position */}
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <h3 className="text-xl font-bold text-white mb-1">
+                          {exp.company}
+                        </h3>
+                        <p className={`text-lg font-semibold bg-gradient-to-r ${exp.color} bg-clip-text text-transparent`}>
+                          {exp.position}
+                        </p>
+                      </div>
+                      <FaBriefcase className="text-primary-400 text-xl flex-shrink-0 ml-4" />
+                    </div>
+
+                    {/* Period */}
+                    <div className="flex items-center text-gray-400 mb-4">
+                      <FaCalendarAlt className="mr-2" />
+                      <span>{exp.period}</span>
+                    </div>
+
+                    {/* Description */}
+                    <ul className="space-y-2">
+                      {exp.description.map((item, i) => (
+                        <li key={i} className="text-gray-300 flex items-start">
+                          <span className="text-primary-400 mr-2 mt-2 w-1 h-1 bg-primary-400 rounded-full flex-shrink-0"></span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

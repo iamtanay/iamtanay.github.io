@@ -1,15 +1,86 @@
 import React from 'react';
-import '../styles/Footer.css';
+import { motion } from 'framer-motion';
+import { FaLinkedin, FaGithub, FaTwitter, FaHeart } from 'react-icons/fa';
 
 const Footer = () => {
+  const socialLinks = [
+    {
+      icon: FaLinkedin,
+      url: 'https://www.linkedin.com/in/tanay-kashyap/',
+      color: 'hover:text-blue-400',
+    },
+    {
+      icon: FaGithub,
+      url: 'https://github.com/iamtanay',
+      color: 'hover:text-gray-400',
+    },
+    {
+      icon: FaTwitter,
+      url: 'https://x.com/iamtanay31',
+      color: 'hover:text-cyan-400',
+    },
+  ];
+
   return (
-    <footer className="footer">
-      <p>© 2024 Tanay Kashyap</p>
-      <ul>
-        <li><a href="https://www.linkedin.com/in/tanay-kashyap/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        <li><a href="https://github.com/iamtanay" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-        <li><a href="https://x.com/iamtanay31" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-      </ul>
+    <footer className="relative py-12 border-t border-primary-500/20">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent"></div>
+      
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          {/* Copyright */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center text-gray-400 mb-4 md:mb-0"
+          >
+            <span>© 2024 Tanay Kashyap. Made with</span>
+            <motion.div
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 1, repeat: Infinity }}
+              className="mx-2"
+            >
+              <FaHeart className="text-red-500" />
+            </motion.div>
+            <span>and lots of coffee</span>
+          </motion.div>
+
+          {/* Social Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex space-x-4"
+          >
+            {socialLinks.map((social, index) => (
+              <motion.a
+                key={index}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className={`p-2 rounded-lg bg-gray-700/30 text-gray-400 ${social.color} transition-all duration-300`}
+              >
+                <social.icon size={20} />
+              </motion.a>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Additional footer content */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-8 pt-8 border-t border-gray-700/50 text-center"
+        >
+          <p className="text-gray-500 text-sm">
+            Designed and built with modern web technologies
+          </p>
+        </motion.div>
+      </div>
     </footer>
   );
 };

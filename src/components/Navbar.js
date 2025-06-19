@@ -1,55 +1,117 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
-import { FaBars, FaTimes } from 'react-icons/fa'; // Import icons
-import '../styles/Navbar.css';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false); // State to toggle mobile menu
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // State to check if the screen is mobile
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Check screen size and set mobile state
-  const handleResize = () => {
-    setIsMobile(window.innerWidth <= 768);
-    if (window.innerWidth > 768) {
-      setMenuOpen(false); // Ensure menu is closed on larger screens
-    }
-  };
-
-  // Attach resize event listener
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
     };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Toggle menu only if on mobile
-  const toggleMenu = () => {
-    if (isMobile) {
-      setMenuOpen(!menuOpen);
-    }
-  };
+  const navItems = [
+    { name: 'Home', to: 'hero' },
+    { name: 'About', to: 'about' },
+    { name: 'Experience', to: 'experience' },
+    { name: 'Education', to: 'education' },
+    { name: 'Skills', to: 'skills' },
+    { name: 'Projects', to: 'projects' },
+    { name: 'Contact', to: 'contact' },
+  ];
 
   return (
-    <nav className="navbar">
-      <h1 className="logo">Tanay Kashyap</h1>
-      
-      {/* Hamburger Icon only for mobile */}
-      <div className="hamburger" onClick={toggleMenu}>
-        {menuOpen ? <FaTimes size={30} /> : <FaBars size={30} />} {/* Change icon based on menu state */}
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-dark-900/90 backdrop-blur-md border-b border-primary-500/20' 
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-4">
+          {/* Logo */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="text-2xl font-bold gradient-text"
+          >
+            Tanay Kashyap
+          </motion.div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex space-x-8">
+            {navItems.map((item, index) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Link
+                  to={item.to}
+                  smooth={true}
+                  duration={500}
+                  className="text-gray-300 hover:text-primary-400 transition-colors duration-300 cursor-pointer relative group"
+                >
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-400 transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden text-gray-300 hover:text-primary-400 transition-colors duration-300"
+          >
+            {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </motion.button>
+        </div>
       </div>
 
-      {/* Navigation Links */}
-      <ul className={menuOpen && isMobile ? "nav-links mobile" : "nav-links"}>
-        <li><Link to="hero" smooth={true} duration={500} onClick={toggleMenu}>Home</Link></li>
-        <li><Link to="about" smooth={true} duration={500} onClick={toggleMenu}>About</Link></li>
-        <li><Link to="experience" smooth={true} duration={500} onClick={toggleMenu}>Experience</Link></li>
-        <li><Link to="education" smooth={true} duration={500} onClick={toggleMenu}>Education</Link></li>
-        <li><Link to="skills" smooth={true} duration={500} onClick={toggleMenu}>Skills</Link></li>
-        <li><Link to="projects" smooth={true} duration={500} onClick={toggleMenu}>Projects</Link></li>
-        <li><Link to="contact" smooth={true} duration={500} onClick={toggleMenu}>Contact</Link></li>
-      </ul>
-    </nav>
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-dark-900/95 backdrop-blur-md border-t border-primary-500/20"
+          >
+            <div className="px-4 py-6 space-y-4">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Link
+                    to={item.to}
+                    smooth={true}
+                    duration={500}
+                    onClick={() => setMenuOpen(false)}
+                    className="block text-gray-300 hover:text-primary-400 transition-colors duration-300 cursor-pointer py-2"
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 
