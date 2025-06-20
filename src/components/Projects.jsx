@@ -1,13 +1,13 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { FaGithub, FaExternalLinkAlt, FaCode, FaServer, FaRobot, FaMobile } from 'react-icons/fa';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { FaGithub, FaExternalLinkAlt, FaCode, FaServer, FaRobot, FaMobile } from 'react-icons/fa'
 
 const Projects = () => {
   const [ref, inView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
-  });
+  })
 
   const projects = [
     {
@@ -46,7 +46,7 @@ const Projects = () => {
       icon: FaMobile,
       color: 'from-orange-500 to-red-500',
     },
-  ];
+  ]
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -56,7 +56,7 @@ const Projects = () => {
         staggerChildren: 0.3,
       },
     },
-  };
+  }
 
   const itemVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -68,14 +68,30 @@ const Projects = () => {
         ease: 'easeOut',
       },
     },
-  };
+  }
 
   return (
     <section id="projects" className="min-h-screen flex items-center py-20 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <motion.div 
+          className="absolute top-1/4 left-0 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"
+          animate={{ 
+            x: [0, 100, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
+        <motion.div 
+          className="absolute bottom-1/4 right-0 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"
+          animate={{ 
+            x: [0, -80, 0],
+            y: [0, 60, 0],
+            scale: [1.1, 1, 1.1]
+          }}
+          transition={{ duration: 12, repeat: Infinity }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -104,7 +120,7 @@ const Projects = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -10 }}
+                whileHover={{ scale: 1.02, y: -10, rotateY: 5 }}
                 transition={{ duration: 0.3 }}
                 className="glass rounded-2xl p-6 border border-primary-500/20 hover:border-primary-400/40 transition-all duration-300 relative overflow-hidden group"
               >
@@ -115,9 +131,13 @@ const Projects = () => {
                   {/* Project header */}
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center">
-                      <div className={`p-3 rounded-xl bg-gradient-to-r ${project.color} bg-opacity-20 mr-4`}>
+                      <motion.div 
+                        className={`p-3 rounded-xl bg-gradient-to-r ${project.color} bg-opacity-20 mr-4`}
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                      >
                         <project.icon className="text-2xl text-white" />
-                      </div>
+                      </motion.div>
                       <h3 className="text-2xl font-bold text-white">{project.title}</h3>
                     </div>
                     
@@ -128,7 +148,7 @@ const Projects = () => {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          whileHover={{ scale: 1.1 }}
+                          whileHover={{ scale: 1.1, rotate: 5 }}
                           whileTap={{ scale: 0.95 }}
                           className="p-2 rounded-lg bg-gray-700/50 text-gray-300 hover:text-white hover:bg-gray-600/50 transition-all duration-300"
                         >
@@ -140,7 +160,7 @@ const Projects = () => {
                           href={project.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          whileHover={{ scale: 1.1 }}
+                          whileHover={{ scale: 1.1, rotate: -5 }}
                           whileTap={{ scale: 0.95 }}
                           className="p-2 rounded-lg bg-gray-700/50 text-gray-300 hover:text-white hover:bg-gray-600/50 transition-all duration-300"
                         >
@@ -163,15 +183,13 @@ const Projects = () => {
                         initial={{ opacity: 0, scale: 0 }}
                         animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
                         transition={{ delay: 0.5 + index * 0.1 + techIndex * 0.05, duration: 0.5 }}
-                        className={`px-3 py-1 text-sm bg-gradient-to-r ${project.color} bg-opacity-20 text-white rounded-full border border-gray-600/50 hover:border-primary-400/50 transition-all duration-300`}
+                        whileHover={{ scale: 1.1, y: -2 }}
+                        className={`px-3 py-1 text-sm bg-gradient-to-r ${project.color} bg-opacity-20 text-white rounded-full border border-gray-600/50 hover:border-primary-400/50 transition-all duration-300 cursor-default`}
                       >
                         {tech}
                       </motion.span>
                     ))}
                   </div>
-
-                  {/* Hover effect overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-transparent to-transparent group-hover:from-black/20 group-hover:to-transparent transition-all duration-300 pointer-events-none"></div>
                 </div>
               </motion.div>
             ))}
@@ -186,18 +204,23 @@ const Projects = () => {
               href="https://github.com/iamtanay"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-primary-600 to-purple-600 rounded-full hover:from-primary-500 hover:to-purple-500 transition-all duration-300 group"
             >
-              <FaGithub className="mr-2 group-hover:rotate-12 transition-transform duration-300" />
+              <motion.div
+                whileHover={{ rotate: 12 }}
+                transition={{ duration: 0.3 }}
+              >
+                <FaGithub className="mr-2" />
+              </motion.div>
               View More Projects
             </motion.a>
           </motion.div>
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Projects;
+export default Projects

@@ -1,12 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 
 const About = () => {
   const [ref, inView] = useInView({
     threshold: 0.3,
     triggerOnce: true,
-  });
+  })
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -16,7 +16,7 @@ const About = () => {
         staggerChildren: 0.3,
       },
     },
-  };
+  }
 
   const itemVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -28,14 +28,22 @@ const About = () => {
         ease: 'easeOut',
       },
     },
-  };
+  }
 
   return (
-    <section id="about" className="min-h-screen flex items-center py-20 relative overflow-hidden bg-slate-800">
+    <section id="about" className="min-h-screen flex items-center py-20 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <motion.div 
+          className="absolute top-1/4 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"
+          animate={{ x: [0, 50, 0], y: [0, -30, 0] }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        <motion.div 
+          className="absolute bottom-1/4 left-0 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"
+          animate={{ x: [0, -40, 0], y: [0, 40, 0] }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -53,8 +61,8 @@ const About = () => {
           >
             <div className="relative">
               <motion.div
-                className="w-80 h-80 mx-auto glass rounded-3xl p-8 relative overflow-hidden bg-white/5 backdrop-blur-lg border border-white/10"
-                whileHover={{ scale: 1.05 }}
+                className="w-80 h-80 mx-auto glass rounded-3xl p-8 relative overflow-hidden"
+                whileHover={{ scale: 1.05, rotateY: 5 }}
                 transition={{ duration: 0.3 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20"></div>
@@ -133,7 +141,7 @@ const About = () => {
                 <motion.div
                   key={index}
                   className="text-center"
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.1, y: -5 }}
                   transition={{ duration: 0.3 }}
                 >
                   <div className="text-2xl md:text-3xl font-bold gradient-text">{stat.number}</div>
@@ -145,7 +153,7 @@ const About = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default About;
+export default About

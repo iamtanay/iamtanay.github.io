@@ -1,13 +1,13 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { FaBriefcase, FaCalendarAlt } from 'react-icons/fa'
 
 const Experience = () => {
   const [ref, inView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
-  });
+  })
 
   const experiences = [
     {
@@ -42,7 +42,7 @@ const Experience = () => {
       ],
       color: 'from-green-500 to-teal-500',
     },
-  ];
+  ]
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -52,7 +52,7 @@ const Experience = () => {
         staggerChildren: 0.3,
       },
     },
-  };
+  }
 
   const itemVariants = {
     hidden: { opacity: 0, x: -50 },
@@ -64,14 +64,22 @@ const Experience = () => {
         ease: 'easeOut',
       },
     },
-  };
+  }
 
   return (
     <section id="experience" className="min-h-screen flex items-center py-20 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <motion.div 
+          className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.2, 1], rotate: 360 }}
+          transition={{ duration: 15, repeat: Infinity }}
+        />
+        <motion.div 
+          className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"
+          animate={{ scale: [1.2, 1, 1.2], rotate: -360 }}
+          transition={{ duration: 12, repeat: Infinity }}
+        />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -108,14 +116,18 @@ const Experience = () => {
                 }`}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-primary-500 rounded-full border-4 border-dark-900 z-10"></div>
+                <motion.div 
+                  className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-primary-500 rounded-full border-4 border-slate-900 z-10"
+                  whileHover={{ scale: 1.5 }}
+                  transition={{ duration: 0.3 }}
+                />
 
                 {/* Content card */}
                 <motion.div
                   className={`ml-16 md:ml-0 md:w-5/12 ${
                     index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
                   }`}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.02, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
                   <div className="glass rounded-2xl p-6 border border-primary-500/20 hover:border-primary-400/40 transition-all duration-300">
@@ -155,7 +167,7 @@ const Experience = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Experience;
+export default Experience

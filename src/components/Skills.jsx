@@ -1,13 +1,13 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { FaCode, FaServer, FaCloud, FaDatabase, FaMobile } from 'react-icons/fa';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { FaCode, FaServer, FaCloud, FaDatabase, FaMobile } from 'react-icons/fa'
 
 const Skills = () => {
   const [ref, inView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
-  });
+  })
 
   const skillCategories = [
     {
@@ -40,7 +40,7 @@ const Skills = () => {
       color: 'from-indigo-500 to-purple-500',
       skills: ['Git', 'VS Code', 'Postman', 'Figma', 'Agile'],
     },
-  ];
+  ]
 
   const mainSkills = [
     {
@@ -73,7 +73,7 @@ const Skills = () => {
       level: 75,
       color: 'from-cyan-500 to-cyan-600',
     },
-  ];
+  ]
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -83,7 +83,7 @@ const Skills = () => {
         staggerChildren: 0.2,
       },
     },
-  };
+  }
 
   const itemVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -95,14 +95,30 @@ const Skills = () => {
         ease: 'easeOut',
       },
     },
-  };
+  }
 
   return (
     <section id="skills" className="min-h-screen flex items-center py-20 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 right-1/4 w-80 h-80 bg-primary-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <motion.div 
+          className="absolute top-0 right-1/4 w-80 h-80 bg-primary-500/5 rounded-full blur-3xl"
+          animate={{ 
+            scale: [1, 1.3, 1],
+            rotate: 360,
+            opacity: [0.3, 0.6, 0.3]
+          }}
+          transition={{ duration: 12, repeat: Infinity }}
+        />
+        <motion.div 
+          className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            rotate: -360,
+            opacity: [0.4, 0.7, 0.4]
+          }}
+          transition={{ duration: 15, repeat: Infinity }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -138,6 +154,7 @@ const Skills = () => {
                   initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                   animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                   transition={{ delay: 0.3 + index * 0.1, duration: 0.8 }}
+                  whileHover={{ scale: 1.02, y: -5 }}
                   className="glass rounded-2xl p-6 border border-primary-500/20 hover:border-primary-400/40 transition-all duration-300"
                 >
                   <div className="flex justify-between items-center mb-2">
@@ -167,7 +184,7 @@ const Skills = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -10 }}
+                whileHover={{ scale: 1.05, y: -10, rotateY: 5 }}
                 transition={{ duration: 0.3 }}
                 className="glass rounded-2xl p-6 border border-primary-500/20 hover:border-primary-400/40 transition-all duration-300 relative overflow-hidden group"
               >
@@ -177,9 +194,13 @@ const Skills = () => {
                 <div className="relative z-10">
                   {/* Icon and title */}
                   <div className="flex items-center mb-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-r ${category.color} bg-opacity-20 mr-4`}>
+                    <motion.div 
+                      className={`p-3 rounded-xl bg-gradient-to-r ${category.color} bg-opacity-20 mr-4`}
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                    >
                       <category.icon className="text-2xl text-white" />
-                    </div>
+                    </motion.div>
                     <h3 className="text-xl font-bold text-white">{category.title}</h3>
                   </div>
 
@@ -191,7 +212,8 @@ const Skills = () => {
                         initial={{ opacity: 0, scale: 0 }}
                         animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
                         transition={{ delay: 0.5 + index * 0.1 + skillIndex * 0.05, duration: 0.5 }}
-                        className="px-3 py-1 text-sm bg-gray-700/50 text-gray-300 rounded-full border border-gray-600/50 hover:border-primary-400/50 transition-all duration-300"
+                        whileHover={{ scale: 1.1, y: -2 }}
+                        className="px-3 py-1 text-sm bg-gray-700/50 text-gray-300 rounded-full border border-gray-600/50 hover:border-primary-400/50 transition-all duration-300 cursor-default"
                       >
                         {skill}
                       </motion.span>
@@ -204,7 +226,7 @@ const Skills = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Skills;
+export default Skills

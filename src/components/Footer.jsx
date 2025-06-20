@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaLinkedin, FaGithub, FaTwitter, FaHeart } from 'react-icons/fa';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { FaLinkedin, FaGithub, FaTwitter, FaHeart } from 'react-icons/fa'
 
 const Footer = () => {
   const socialLinks = [
@@ -19,12 +19,12 @@ const Footer = () => {
       url: 'https://x.com/iamtanay31',
       color: 'hover:text-cyan-400',
     },
-  ];
+  ]
 
   return (
     <footer className="relative py-12 border-t border-primary-500/20">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center">
@@ -59,7 +59,7 @@ const Footer = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, y: -3 }}
+                whileHover={{ scale: 1.2, y: -3, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
                 className={`p-2 rounded-lg bg-gray-700/30 text-gray-400 ${social.color} transition-all duration-300`}
               >
@@ -82,7 +82,7 @@ const Footer = () => {
         </motion.div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

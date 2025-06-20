@@ -1,13 +1,13 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa'
 
 const Contact = () => {
   const [ref, inView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
-  });
+  })
 
   const contactInfo = [
     {
@@ -31,7 +31,7 @@ const Contact = () => {
       link: '',
       color: 'from-purple-500 to-pink-500',
     },
-  ];
+  ]
 
   const socialLinks = [
     {
@@ -52,7 +52,7 @@ const Contact = () => {
       url: 'https://x.com/iamtanay31',
       color: 'hover:text-cyan-400',
     },
-  ];
+  ]
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -62,7 +62,7 @@ const Contact = () => {
         staggerChildren: 0.3,
       },
     },
-  };
+  }
 
   const itemVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -74,14 +74,30 @@ const Contact = () => {
         ease: 'easeOut',
       },
     },
-  };
+  }
 
   return (
     <section id="contact" className="min-h-screen flex items-center py-20 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/3 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <motion.div 
+          className="absolute top-0 left-1/3 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"
+          animate={{ 
+            scale: [1, 1.3, 1],
+            x: [0, 50, 0],
+            opacity: [0.3, 0.6, 0.3]
+          }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        <motion.div 
+          className="absolute bottom-0 right-1/3 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            x: [0, -40, 0],
+            opacity: [0.4, 0.7, 0.4]
+          }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -126,13 +142,17 @@ const Contact = () => {
                     initial={{ opacity: 0, x: -50 }}
                     animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                     transition={{ delay: 0.3 + index * 0.1, duration: 0.8 }}
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.02, x: 10 }}
                     className="glass rounded-xl p-4 border border-primary-500/20 hover:border-primary-400/40 transition-all duration-300 group"
                   >
                     <div className="flex items-center">
-                      <div className={`p-3 rounded-lg bg-gradient-to-r ${info.color} bg-opacity-20 mr-4 group-hover:scale-110 transition-transform duration-300`}>
+                      <motion.div 
+                        className={`p-3 rounded-lg bg-gradient-to-r ${info.color} bg-opacity-20 mr-4`}
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                      >
                         <info.icon className="text-xl text-white" />
-                      </div>
+                      </motion.div>
                       <div>
                         <h4 className="text-white font-semibold">{info.title}</h4>
                         {info.link ? (
@@ -164,7 +184,7 @@ const Contact = () => {
                       initial={{ opacity: 0, scale: 0 }}
                       animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
                       transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
-                      whileHover={{ scale: 1.2, y: -5 }}
+                      whileHover={{ scale: 1.2, y: -5, rotate: 5 }}
                       whileTap={{ scale: 0.95 }}
                       className={`p-3 rounded-lg bg-gray-700/50 text-gray-400 ${social.color} transition-all duration-300`}
                     >
@@ -175,7 +195,7 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            {/* Contact Form (Google Form Embed) */}
+            {/* Contact Form */}
             <motion.div
               variants={itemVariants}
               className="glass rounded-2xl p-8 border border-primary-500/20 hover:border-primary-400/40 transition-all duration-300"
@@ -206,7 +226,7 @@ const Contact = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

@@ -1,30 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react'
+import { FaBars, FaTimes } from 'react-icons/fa'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+      setScrolled(window.scrollY > 50)
+    }
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navItems = [
-    { name: 'Home', to: 'hero' },
-    { name: 'About', to: 'about' },
-    { name: 'Experience', to: 'experience' },
-    { name: 'Education', to: 'education' },
-    { name: 'Skills', to: 'skills' },
-    { name: 'Projects', to: 'projects' },
-    { name: 'Contact', to: 'contact' },
-  ];
+    { name: 'Home', href: '#hero' },
+    { name: 'About', href: '#about' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Education', href: '#education' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Contact', href: '#contact' },
+  ]
+
+  const scrollToSection = (href) => {
+    const element = document.querySelector(href)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+    setMenuOpen(false)
+  }
 
   return (
     <motion.nav
@@ -32,7 +39,7 @@ const Navbar = () => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-dark-900/90 backdrop-blur-md border-b border-primary-500/20' 
+          ? 'glass border-b border-primary-500/20' 
           : 'bg-transparent'
       }`}
     >
@@ -41,7 +48,8 @@ const Navbar = () => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold gradient-text"
+            className="text-2xl font-bold gradient-text cursor-pointer"
+            onClick={() => scrollToSection('#hero')}
           >
             Tanay Kashyap
           </motion.div>
@@ -49,22 +57,17 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item, index) => (
-              <motion.div
+              <motion.button
                 key={item.name}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
+                onClick={() => scrollToSection(item.href)}
+                className="text-gray-300 hover:text-primary-400 transition-colors duration-300 relative group"
               >
-                <Link
-                  to={item.to}
-                  smooth={true}
-                  duration={500}
-                  className="text-gray-300 hover:text-primary-400 transition-colors duration-300 cursor-pointer relative group"
-                >
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-400 transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-              </motion.div>
+                {item.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-400 transition-all duration-300 group-hover:w-full"></span>
+              </motion.button>
             ))}
           </div>
 
@@ -86,33 +89,27 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-dark-900/95 backdrop-blur-md border-t border-primary-500/20"
+            className="md:hidden glass border-t border-primary-500/20"
           >
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item, index) => (
-                <motion.div
+                <motion.button
                   key={item.name}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
+                  onClick={() => scrollToSection(item.href)}
+                  className="block w-full text-left text-gray-300 hover:text-primary-400 transition-colors duration-300 py-2"
                 >
-                  <Link
-                    to={item.to}
-                    smooth={true}
-                    duration={500}
-                    onClick={() => setMenuOpen(false)}
-                    className="block text-gray-300 hover:text-primary-400 transition-colors duration-300 cursor-pointer py-2"
-                  >
-                    {item.name}
-                  </Link>
-                </motion.div>
+                  {item.name}
+                </motion.button>
               ))}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </motion.nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

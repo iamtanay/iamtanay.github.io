@@ -1,13 +1,13 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { FaGraduationCap, FaCertificate, FaCalendarAlt } from 'react-icons/fa';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { FaGraduationCap, FaCertificate, FaCalendarAlt } from 'react-icons/fa'
 
 const Education = () => {
   const [ref, inView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
-  });
+  })
 
   const education = [
     {
@@ -32,12 +32,12 @@ const Education = () => {
       icon: FaGraduationCap,
       color: 'from-purple-500 to-pink-500',
     },
-  ];
+  ]
 
   const certifications = [
     'STAR Labs Satellite Masterclass',
     'CFA(Chartered Financial Analyst USA) Level 1',
-  ];
+  ]
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -47,7 +47,7 @@ const Education = () => {
         staggerChildren: 0.3,
       },
     },
-  };
+  }
 
   const itemVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -59,14 +59,22 @@ const Education = () => {
         ease: 'easeOut',
       },
     },
-  };
+  }
 
   return (
     <section id="education" className="min-h-screen flex items-center py-20 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/3 left-0 w-72 h-72 bg-primary-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <motion.div 
+          className="absolute top-1/3 left-0 w-72 h-72 bg-primary-500/5 rounded-full blur-3xl"
+          animate={{ x: [0, 100, 0], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        <motion.div 
+          className="absolute bottom-1/3 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"
+          animate={{ x: [0, -80, 0], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -95,7 +103,7 @@ const Education = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -5 }}
+                whileHover={{ scale: 1.02, y: -5, rotateY: 5 }}
                 transition={{ duration: 0.3 }}
                 className="glass rounded-2xl p-6 border border-primary-500/20 hover:border-primary-400/40 transition-all duration-300 relative overflow-hidden"
               >
@@ -105,9 +113,13 @@ const Education = () => {
                 <div className="relative z-10">
                   {/* Icon and period */}
                   <div className="flex items-start justify-between mb-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-r ${edu.color} bg-opacity-20`}>
+                    <motion.div 
+                      className={`p-3 rounded-xl bg-gradient-to-r ${edu.color} bg-opacity-20`}
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                    >
                       <edu.icon className="text-2xl text-white" />
-                    </div>
+                    </motion.div>
                     <div className="flex items-center text-gray-400 text-sm">
                       <FaCalendarAlt className="mr-2" />
                       <span>{edu.period}</span>
@@ -149,9 +161,13 @@ const Education = () => {
             <div className="relative z-10">
               {/* Header */}
               <div className="flex items-center mb-6">
-                <div className="p-3 rounded-xl bg-gradient-to-r from-green-500 to-teal-500 bg-opacity-20 mr-4">
+                <motion.div 
+                  className="p-3 rounded-xl bg-gradient-to-r from-green-500 to-teal-500 bg-opacity-20 mr-4"
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                >
                   <FaCertificate className="text-2xl text-white" />
-                </div>
+                </motion.div>
                 <h3 className="text-2xl font-bold gradient-text">Certifications</h3>
               </div>
 
@@ -163,7 +179,7 @@ const Education = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                     transition={{ delay: 0.5 + index * 0.2, duration: 0.6 }}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.05, x: 10 }}
                     className="flex items-center p-4 bg-gradient-to-r from-green-500/10 to-teal-500/10 rounded-xl border border-green-500/20 hover:border-green-400/40 transition-all duration-300"
                   >
                     <span className="text-green-400 mr-3 w-2 h-2 bg-green-400 rounded-full flex-shrink-0"></span>
@@ -176,7 +192,7 @@ const Education = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Education;
+export default Education
