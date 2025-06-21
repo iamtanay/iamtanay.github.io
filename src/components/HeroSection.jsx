@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaChevronDown } from 'react-icons/fa'
+import { FaChevronDown, FaDownload } from 'react-icons/fa'
 import { TypeAnimation } from 'react-type-animation'
 
 const HeroSection = () => {
@@ -12,27 +12,29 @@ const HeroSection = () => {
   }
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Animated background elements */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         <motion.div 
-          className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"
+          className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 dark:bg-blue-400/10 rounded-full blur-3xl"
           animate={{ 
             scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3]
+            opacity: [0.3, 0.6, 0.3],
+            x: [0, 50, 0],
           }}
-          transition={{ duration: 4, repeat: Infinity }}
+          transition={{ duration: 8, repeat: Infinity }}
         />
         <motion.div 
-          className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
+          className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 dark:bg-purple-400/10 rounded-full blur-3xl"
           animate={{ 
             scale: [1.2, 1, 1.2],
-            opacity: [0.4, 0.7, 0.4]
+            opacity: [0.4, 0.7, 0.4],
+            x: [0, -50, 0],
           }}
-          transition={{ duration: 5, repeat: Infinity }}
+          transition={{ duration: 10, repeat: Infinity }}
         />
         <motion.div 
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-cyan-500/10 dark:bg-cyan-400/10 rounded-full blur-3xl"
           animate={{ 
             rotate: 360,
             scale: [1, 1.3, 1]
@@ -44,7 +46,7 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -56,7 +58,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="text-blue-400 text-lg md:text-xl font-medium tracking-wider"
+            className="text-blue-600 dark:text-blue-400 text-lg md:text-xl font-medium tracking-wider"
           >
             Hello, I'm
           </motion.p>
@@ -68,7 +70,7 @@ const HeroSection = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="text-5xl md:text-7xl lg:text-8xl font-bold"
           >
-            <span className="gradient-text glow-text">
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 dark:from-blue-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent">
               <TypeAnimation
                 sequence={['Tanay Kashyap']}
                 speed={50}
@@ -83,53 +85,66 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 0.8 }}
-            className="text-2xl md:text-4xl font-light text-gray-300"
+            className="text-2xl md:text-4xl font-light text-gray-700 dark:text-gray-300"
           >
-            Full Stack Developer
+            Full Stack Developer & AI Enthusiast
           </motion.h2>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.8, duration: 0.8 }}
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
+          >
+            Passionate about creating innovative solutions with modern technologies. 
+            Specializing in MERN stack, AI/ML, and scalable system architecture.
+          </motion.p>
 
           {/* Tech stack */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2, duration: 0.8 }}
-            className="flex flex-wrap justify-center gap-4 text-lg md:text-xl text-gray-400"
+            className="flex flex-wrap justify-center gap-4 text-sm md:text-base"
           >
-            {['MERN', 'C++', 'Python', 'Go'].map((tech, index) => (
+            {['MERN Stack', 'Python', 'C++', 'Go', 'AI/ML', 'Cloud'].map((tech, index) => (
               <motion.span
                 key={tech}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 2.2 + index * 0.1, duration: 0.5 }}
-                whileHover={{ scale: 1.1, y: -5 }}
-                className="px-4 py-2 glass rounded-full border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 cursor-default"
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="px-4 py-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-300 shadow-sm hover:shadow-md transition-all duration-300"
               >
                 {tech}
               </motion.span>
             ))}
           </motion.div>
 
-          {/* CTA Button */}
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.8, duration: 0.8 }}
-            className="pt-8"
+            className="flex flex-col sm:flex-row gap-4 justify-center pt-8"
           >
             <motion.button
               onClick={() => scrollToSection('#contact')}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-500 hover:to-purple-500 transition-all duration-300 overflow-hidden"
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <span className="relative z-10">Let's Connect</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <motion.div
-                className="absolute inset-0 bg-white/20"
-                initial={{ x: '-100%' }}
-                whileHover={{ x: '100%' }}
-                transition={{ duration: 0.6 }}
-              />
+              Let's Connect
+            </motion.button>
+            
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-300 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <FaDownload size={16} />
+              Download CV
             </motion.button>
           </motion.div>
         </motion.div>
@@ -145,7 +160,7 @@ const HeroSection = () => {
             onClick={() => scrollToSection('#about')}
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="text-gray-400 hover:text-blue-400 transition-colors duration-300"
+            className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
           >
             <FaChevronDown size={24} />
           </motion.button>

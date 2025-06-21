@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import About from './components/About'
@@ -8,22 +8,27 @@ import Projects from './components/Projects'
 import Education from './components/Education'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import ParticleBackground from './components/ParticleBackground'
+import SocialSidebar from './components/SocialSidebar'
+import ThemeProvider from './context/ThemeContext'
 
 function App() {
   return (
-    <div className="App relative min-h-screen animated-bg">
-      <ParticleBackground />
-      <Navbar />
-      <HeroSection />
-      <About />
-      <Experience />
-      <Education />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="App relative min-h-screen transition-colors duration-300">
+        <Navbar />
+        <SocialSidebar />
+        <main>
+          <HeroSection />
+          <About />
+          <Experience />
+          <Education />
+          <Skills />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   )
 }
 

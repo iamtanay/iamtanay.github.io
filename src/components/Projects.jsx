@@ -71,11 +71,11 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="min-h-screen flex items-center py-20 relative overflow-hidden">
+    <section id="projects" className="py-20 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0">
         <motion.div 
-          className="absolute top-1/4 left-0 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"
+          className="absolute top-1/4 left-0 w-96 h-96 bg-blue-500/5 dark:bg-blue-400/10 rounded-full blur-3xl"
           animate={{ 
             x: [0, 100, 0],
             y: [0, -50, 0],
@@ -84,7 +84,7 @@ const Projects = () => {
           transition={{ duration: 10, repeat: Infinity }}
         />
         <motion.div 
-          className="absolute bottom-1/4 right-0 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-0 w-80 h-80 bg-purple-500/5 dark:bg-purple-400/10 rounded-full blur-3xl"
           animate={{ 
             x: [0, -80, 0],
             y: [0, 60, 0],
@@ -106,10 +106,10 @@ const Projects = () => {
             variants={itemVariants}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
               Featured Projects
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
               A showcase of my recent work and personal projects
             </p>
           </motion.div>
@@ -120,12 +120,12 @@ const Projects = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -10, rotateY: 5 }}
+                whileHover={{ scale: 1.02, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="glass rounded-2xl p-6 border border-primary-500/20 hover:border-primary-400/40 transition-all duration-300 relative overflow-hidden group"
+                className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 relative overflow-hidden group"
               >
                 {/* Background gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-300`}></div>
                 
                 <div className="relative z-10">
                   {/* Project header */}
@@ -138,7 +138,7 @@ const Projects = () => {
                       >
                         <project.icon className="text-2xl text-white" />
                       </motion.div>
-                      <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+                      <h3 className="text-2xl font-bold text-gray-800 dark:text-white">{project.title}</h3>
                     </div>
                     
                     {/* Action buttons */}
@@ -150,7 +150,7 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.1, rotate: 5 }}
                           whileTap={{ scale: 0.95 }}
-                          className="p-2 rounded-lg bg-gray-700/50 text-gray-300 hover:text-white hover:bg-gray-600/50 transition-all duration-300"
+                          className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
                         >
                           <FaGithub size={20} />
                         </motion.a>
@@ -162,7 +162,7 @@ const Projects = () => {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.1, rotate: -5 }}
                           whileTap={{ scale: 0.95 }}
-                          className="p-2 rounded-lg bg-gray-700/50 text-gray-300 hover:text-white hover:bg-gray-600/50 transition-all duration-300"
+                          className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
                         >
                           <FaExternalLinkAlt size={20} />
                         </motion.a>
@@ -171,7 +171,7 @@ const Projects = () => {
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-300 mb-6 leading-relaxed">
+                  <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
                     {project.description}
                   </p>
 
@@ -184,7 +184,7 @@ const Projects = () => {
                         animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
                         transition={{ delay: 0.5 + index * 0.1 + techIndex * 0.05, duration: 0.5 }}
                         whileHover={{ scale: 1.1, y: -2 }}
-                        className={`px-3 py-1 text-sm bg-gradient-to-r ${project.color} bg-opacity-20 text-white rounded-full border border-gray-600/50 hover:border-primary-400/50 transition-all duration-300 cursor-default`}
+                        className={`px-3 py-1 text-sm bg-gradient-to-r ${project.color} bg-opacity-20 text-gray-700 dark:text-gray-300 rounded-full border border-gray-200 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-400 transition-all duration-300 cursor-default`}
                       >
                         {tech}
                       </motion.span>
@@ -206,7 +206,7 @@ const Projects = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-primary-600 to-purple-600 rounded-full hover:from-primary-500 hover:to-purple-500 transition-all duration-300 group"
+              className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
               <motion.div
                 whileHover={{ rotate: 12 }}

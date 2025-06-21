@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { FaCode, FaServer, FaCloud, FaDatabase, FaMobile } from 'react-icons/fa'
+import { FaCode, FaServer, FaCloud, FaDatabase, FaMobile, FaBrain } from 'react-icons/fa'
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -23,21 +23,27 @@ const Skills = () => {
       skills: ['Node.js', 'Express.js', 'Python', 'C++', 'Go', 'REST APIs'],
     },
     {
+      title: 'AI & ML',
+      icon: FaBrain,
+      color: 'from-purple-500 to-pink-500',
+      skills: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'OpenCV', 'NLP', 'Deep Learning'],
+    },
+    {
       title: 'Database',
       icon: FaDatabase,
-      color: 'from-purple-500 to-pink-500',
+      color: 'from-orange-500 to-red-500',
       skills: ['MongoDB', 'MySQL', 'PostgreSQL', 'Redis', 'Couchbase'],
     },
     {
       title: 'Cloud & DevOps',
       icon: FaCloud,
-      color: 'from-orange-500 to-red-500',
+      color: 'from-indigo-500 to-purple-500',
       skills: ['AWS', 'Docker', 'Kubernetes', 'CI/CD', 'Linux'],
     },
     {
       title: 'Tools & Others',
       icon: FaMobile,
-      color: 'from-indigo-500 to-purple-500',
+      color: 'from-pink-500 to-rose-500',
       skills: ['Git', 'VS Code', 'Postman', 'Figma', 'Agile'],
     },
   ]
@@ -60,6 +66,12 @@ const Skills = () => {
       description: 'Full stack development with MongoDB, Express.js, React, and Node.js for scalable web applications.',
       level: 88,
       color: 'from-purple-500 to-purple-600',
+    },
+    {
+      name: 'AI & ML',
+      description: 'Machine Learning and AI development with focus on deep learning and neural networks.',
+      level: 82,
+      color: 'from-pink-500 to-rose-600',
     },
     {
       name: 'AWS & Docker',
@@ -98,11 +110,11 @@ const Skills = () => {
   }
 
   return (
-    <section id="skills" className="min-h-screen flex items-center py-20 relative overflow-hidden">
+    <section id="skills" className="py-20 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0">
         <motion.div 
-          className="absolute top-0 right-1/4 w-80 h-80 bg-primary-500/5 rounded-full blur-3xl"
+          className="absolute top-0 right-1/4 w-80 h-80 bg-blue-500/5 dark:bg-blue-400/10 rounded-full blur-3xl"
           animate={{ 
             scale: [1, 1.3, 1],
             rotate: 360,
@@ -111,7 +123,7 @@ const Skills = () => {
           transition={{ duration: 12, repeat: Infinity }}
         />
         <motion.div 
-          className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"
+          className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-500/5 dark:bg-purple-400/10 rounded-full blur-3xl"
           animate={{ 
             scale: [1.2, 1, 1.2],
             rotate: -360,
@@ -133,10 +145,10 @@ const Skills = () => {
             variants={itemVariants}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
               Skills & Expertise
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
               Technologies and tools I use to bring ideas to life
             </p>
           </motion.div>
@@ -146,7 +158,7 @@ const Skills = () => {
             variants={itemVariants}
             className="mb-16"
           >
-            <h3 className="text-2xl font-bold text-white mb-8 text-center">Core Technologies</h3>
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-8 text-center">Core Technologies</h3>
             <div className="grid md:grid-cols-2 gap-6">
               {mainSkills.map((skill, index) => (
                 <motion.div
@@ -155,14 +167,14 @@ const Skills = () => {
                   animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                   transition={{ delay: 0.3 + index * 0.1, duration: 0.8 }}
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className="glass rounded-2xl p-6 border border-primary-500/20 hover:border-primary-400/40 transition-all duration-300"
+                  className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50"
                 >
                   <div className="flex justify-between items-center mb-2">
-                    <h4 className="text-xl font-semibold text-white">{skill.name}</h4>
-                    <span className="text-primary-400 font-semibold">{skill.level}%</span>
+                    <h4 className="text-xl font-semibold text-gray-800 dark:text-white">{skill.name}</h4>
+                    <span className="text-blue-600 dark:text-blue-400 font-semibold">{skill.level}%</span>
                   </div>
-                  <p className="text-gray-400 text-sm mb-4">{skill.description}</p>
-                  <div className="w-full bg-gray-700 rounded-full h-2">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">{skill.description}</p>
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                     <motion.div
                       className={`h-2 rounded-full bg-gradient-to-r ${skill.color}`}
                       initial={{ width: 0 }}
@@ -184,12 +196,12 @@ const Skills = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -10, rotateY: 5 }}
+                whileHover={{ scale: 1.05, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="glass rounded-2xl p-6 border border-primary-500/20 hover:border-primary-400/40 transition-all duration-300 relative overflow-hidden group"
+                className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 relative overflow-hidden group"
               >
                 {/* Background gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-5 dark:opacity-10 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-300`}></div>
                 
                 <div className="relative z-10">
                   {/* Icon and title */}
@@ -201,7 +213,7 @@ const Skills = () => {
                     >
                       <category.icon className="text-2xl text-white" />
                     </motion.div>
-                    <h3 className="text-xl font-bold text-white">{category.title}</h3>
+                    <h3 className="text-xl font-bold text-gray-800 dark:text-white">{category.title}</h3>
                   </div>
 
                   {/* Skills */}
@@ -213,7 +225,7 @@ const Skills = () => {
                         animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
                         transition={{ delay: 0.5 + index * 0.1 + skillIndex * 0.05, duration: 0.5 }}
                         whileHover={{ scale: 1.1, y: -2 }}
-                        className="px-3 py-1 text-sm bg-gray-700/50 text-gray-300 rounded-full border border-gray-600/50 hover:border-primary-400/50 transition-all duration-300 cursor-default"
+                        className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full border border-gray-200 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-400 transition-all duration-300 cursor-default"
                       >
                         {skill}
                       </motion.span>

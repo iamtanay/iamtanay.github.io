@@ -17,6 +17,7 @@ const Experience = () => {
       description: [
         'Developed solutions using advanced Python for AI-driven projects.',
         'Focused on optimization and scaling for high-performance applications.',
+        'Collaborated with cross-functional teams to deliver innovative AI solutions.',
       ],
       color: 'from-blue-500 to-cyan-500',
     },
@@ -67,16 +68,16 @@ const Experience = () => {
   }
 
   return (
-    <section id="experience" className="min-h-screen flex items-center py-20 relative overflow-hidden">
+    <section id="experience" className="py-20 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0">
         <motion.div 
-          className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"
+          className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/5 dark:bg-blue-400/10 rounded-full blur-3xl"
           animate={{ scale: [1, 1.2, 1], rotate: 360 }}
           transition={{ duration: 15, repeat: Infinity }}
         />
         <motion.div 
-          className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"
+          className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/5 dark:bg-purple-400/10 rounded-full blur-3xl"
           animate={{ scale: [1.2, 1, 1.2], rotate: -360 }}
           transition={{ duration: 12, repeat: Infinity }}
         />
@@ -94,10 +95,10 @@ const Experience = () => {
             variants={itemVariants}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
               Experience
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
               My professional journey through various roles and technologies
             </p>
           </motion.div>
@@ -105,7 +106,7 @@ const Experience = () => {
           {/* Timeline */}
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-purple-500"></div>
+            <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400"></div>
 
             {experiences.map((exp, index) => (
               <motion.div
@@ -117,7 +118,7 @@ const Experience = () => {
               >
                 {/* Timeline dot */}
                 <motion.div 
-                  className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-primary-500 rounded-full border-4 border-slate-900 z-10"
+                  className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full border-4 border-white dark:border-slate-800 z-10 shadow-lg"
                   whileHover={{ scale: 1.5 }}
                   transition={{ duration: 0.3 }}
                 />
@@ -130,35 +131,40 @@ const Experience = () => {
                   whileHover={{ scale: 1.02, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="glass rounded-2xl p-6 border border-primary-500/20 hover:border-primary-400/40 transition-all duration-300">
-                    {/* Company and position */}
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold text-white mb-1">
-                          {exp.company}
-                        </h3>
-                        <p className={`text-lg font-semibold bg-gradient-to-r ${exp.color} bg-clip-text text-transparent`}>
-                          {exp.position}
-                        </p>
+                  <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200/50 dark:border-gray-700/50 relative overflow-hidden">
+                    {/* Background gradient */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${exp.color} opacity-5 dark:opacity-10`}></div>
+                    
+                    <div className="relative z-10">
+                      {/* Company and position */}
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-1">
+                            {exp.company}
+                          </h3>
+                          <p className={`text-lg font-semibold bg-gradient-to-r ${exp.color} bg-clip-text text-transparent`}>
+                            {exp.position}
+                          </p>
+                        </div>
+                        <FaBriefcase className="text-blue-600 dark:text-blue-400 text-xl flex-shrink-0 ml-4" />
                       </div>
-                      <FaBriefcase className="text-primary-400 text-xl flex-shrink-0 ml-4" />
-                    </div>
 
-                    {/* Period */}
-                    <div className="flex items-center text-gray-400 mb-4">
-                      <FaCalendarAlt className="mr-2" />
-                      <span>{exp.period}</span>
-                    </div>
+                      {/* Period */}
+                      <div className="flex items-center text-gray-600 dark:text-gray-400 mb-4">
+                        <FaCalendarAlt className="mr-2" />
+                        <span>{exp.period}</span>
+                      </div>
 
-                    {/* Description */}
-                    <ul className="space-y-2">
-                      {exp.description.map((item, i) => (
-                        <li key={i} className="text-gray-300 flex items-start">
-                          <span className="text-primary-400 mr-2 mt-2 w-1 h-1 bg-primary-400 rounded-full flex-shrink-0"></span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                      {/* Description */}
+                      <ul className="space-y-2">
+                        {exp.description.map((item, i) => (
+                          <li key={i} className="text-gray-700 dark:text-gray-300 flex items-start">
+                            <span className="text-blue-600 dark:text-blue-400 mr-2 mt-2 w-1 h-1 bg-blue-600 dark:bg-blue-400 rounded-full flex-shrink-0"></span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </motion.div>
               </motion.div>
