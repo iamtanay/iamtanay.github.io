@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FaChevronDown } from 'react-icons/fa'
-import { ReactTyped as Typed } from 'react-typed'
+import { TypeAnimation } from 'react-type-animation'
 
 const HeroSection = () => {
   const scrollToSection = (href) => {
@@ -69,13 +69,11 @@ const HeroSection = () => {
             className="text-5xl md:text-7xl lg:text-8xl font-bold"
           >
             <span className="gradient-text glow-text">
-              <Typed
-                strings={['Tanay Kashyap']}
-                typeSpeed={100}
-                backSpeed={0}
-                backDelay={0}
-                loop={false}
-                showCursor={false}
+              <TypeAnimation
+                sequence={['Tanay Kashyap']}
+                speed={50}
+                repeat={0}
+                cursor={false}
               />
             </span>
           </motion.h1>
