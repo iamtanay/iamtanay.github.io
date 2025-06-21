@@ -21,7 +21,7 @@ const Contact = () => {
       icon: FaPhone,
       title: 'Phone',
       value: '+91 6354334993',
-      link: 'tel:+91XXXXXXXXX',
+      link: 'tel:+916354334993',
       color: 'from-green-500 to-teal-500',
     },
     {
