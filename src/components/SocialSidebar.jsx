@@ -24,7 +24,7 @@ const SocialSidebar = () => {
     },
     {
       icon: FaEnvelope,
-      url: 'mailto:tanay@example.com',
+      url: 'mailto:tanaykashyap.dev@gmail.com',
       color: 'hover:text-red-600 dark:hover:text-red-400',
       bgColor: 'hover:bg-red-100 dark:hover:bg-red-900/30',
     },
