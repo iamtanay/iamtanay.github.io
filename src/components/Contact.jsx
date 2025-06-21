@@ -13,14 +13,14 @@ const Contact = () => {
     {
       icon: FaEnvelope,
       title: 'Email',
-      value: 'tanay@example.com',
-      link: 'mailto:tanay@example.com',
+      value: 'tanaykashyap.dev@gmail.com',
+      link: 'mailto:tanaykashyap.dev@gmail.com',
       color: 'from-blue-500 to-cyan-500',
     },
     {
       icon: FaPhone,
       title: 'Phone',
-      value: '+91 XXXXX XXXXX',
+      value: '+91 6354334993',
       link: 'tel:+91XXXXXXXXX',
       color: 'from-green-500 to-teal-500',
     },
