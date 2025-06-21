@@ -1,6 +1,6 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { FaLinkedin, FaGithub, FaTwitter, FaHeart } from 'react-icons/fa'
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FaLinkedin, FaGithub, FaTwitter, FaHeart } from 'react-icons/fa';
 
 const Footer = () => {
   const socialLinks = [
@@ -19,7 +19,9 @@ const Footer = () => {
       url: 'https://x.com/iamtanay31',
       color: 'hover:text-cyan-600 dark:hover:text-cyan-400',
     },
-  ]
+  ];
+
+  const year = new Date().getFullYear();
 
   return (
     <footer className="relative py-12 border-t border-gray-200/50 dark:border-gray-700/50 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm">
@@ -32,7 +34,7 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
             className="flex items-center text-gray-600 dark:text-gray-400 mb-4 md:mb-0"
           >
-            <span>© 2024 Tanay Kashyap. Made with</span>
+            <span>© {year} Tanay Kashyap. Made with</span>
             <motion.div
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 1, repeat: Infinity }}
@@ -40,7 +42,6 @@ const Footer = () => {
             >
               <FaHeart className="text-red-500" />
             </motion.div>
-            <span>and lots of coffee</span>
           </motion.div>
 
           {/* Social Links */}
@@ -65,21 +66,9 @@ const Footer = () => {
             ))}
           </motion.div>
         </div>
-
-        {/* Additional footer content */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-8 pt-8 border-t border-gray-200/50 dark:border-gray-700/50 text-center"
-        >
-          <p className="text-gray-500 dark:text-gray-500 text-sm">
-            Designed and built with modern web technologies
-          </p>
-        </motion.div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
