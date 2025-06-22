@@ -1,16 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaChevronDown, FaDownload } from 'react-icons/fa'
 import { TypeAnimation } from 'react-type-animation'
 
 const HeroSection = () => {
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Animated background elements */}
@@ -122,48 +114,24 @@ const HeroSection = () => {
             ))}
           </motion.div>
 
-          {/* CTA Buttons */}
+          {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.8, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center pt-8"
+            className="flex justify-center pt-8"
           >
-            <motion.button
-              onClick={() => scrollToSection('#contact')}
+            <motion.a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=tanaykashyap.dev@gmail.com&su=Hello%20Tanay,%20would%20like%20to%20connect"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Let's Connect
-            </motion.button>
-            
-            <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-300 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              <FaDownload size={16} />
-              Download CV
-            </motion.button>
+            </motion.a>
           </motion.div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 3.5, duration: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.button
-            onClick={() => scrollToSection('#about')}
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
-          >
-            <FaChevronDown size={24} />
-          </motion.button>
         </motion.div>
       </div>
     </section>
