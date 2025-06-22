@@ -81,7 +81,7 @@ const About = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 animate-pulse"></div>
-                    <span className="text-4xl font-bold text-white relative z-10">T</span>
+                    <span className="text-4xl font-bold text-white relative z-10">TK</span>
                   </motion.div>
                   
                   <h3 className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-2">
