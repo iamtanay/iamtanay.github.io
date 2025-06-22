@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { FaCode, FaLaptopCode, FaBrain } from 'react-icons/fa'
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -29,6 +30,12 @@ const About = () => {
       },
     },
   }
+
+  const skills = [
+    { icon: FaCode, label: 'Full Stack', color: 'from-blue-500 to-cyan-500' },
+    { icon: FaLaptopCode, label: 'Web Dev', color: 'from-green-500 to-teal-500' },
+    { icon: FaBrain, label: 'AI/ML', color: 'from-purple-500 to-pink-500' },
+  ]
 
   return (
     <section id="about" className="py-20 relative overflow-hidden">
@@ -66,17 +73,37 @@ const About = () => {
                 transition={{ duration: 0.3 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-blue-400/20 dark:to-purple-400/20"></div>
-                <div className="relative z-10 h-full flex items-center justify-center">
-                  <div className="text-center">
-                    <motion.div
-                      className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 rounded-full flex items-center justify-center text-4xl font-bold text-white shadow-lg"
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    >
-                      TK
-                    </motion.div>
-                    <h3 className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">Full Stack Developer</h3>
-                    <p className="text-gray-600 dark:text-gray-400 mt-2">Passionate about creating amazing experiences</p>
+                <div className="relative z-10 h-full flex flex-col items-center justify-center">
+                  {/* Profile Image Placeholder */}
+                  <motion.div
+                    className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 rounded-full flex items-center justify-center shadow-lg relative overflow-hidden"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 animate-pulse"></div>
+                    <span className="text-4xl font-bold text-white relative z-10">T</span>
+                  </motion.div>
+                  
+                  <h3 className="text-xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-2">
+                    Tanay Kashyap
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-center mb-4">
+                    Full Stack Developer & AI Enthusiast
+                  </p>
+                  
+                  {/* Skill Icons */}
+                  <div className="flex space-x-4">
+                    {skills.map((skill, index) => (
+                      <motion.div
+                        key={index}
+                        className={`p-2 rounded-lg bg-gradient-to-r ${skill.color} bg-opacity-20`}
+                        whileHover={{ scale: 1.2, y: -5 }}
+                        transition={{ duration: 0.3 }}
+                        title={skill.label}
+                      >
+                        <skill.icon className="text-lg text-white" />
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
               </motion.div>

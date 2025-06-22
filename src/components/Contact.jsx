@@ -23,7 +23,7 @@ const Contact = () => {
       icon: FaEnvelope,
       title: 'Email',
       value: 'tanaykashyap.dev@gmail.com',
-      link: 'mailto:tanaykashyap.dev@gmail.com',
+      link: 'https://mail.google.com/mail/?view=cm&fs=1&to=tanaykashyap.dev@gmail.com&su=Hello%20Tanay,%20would%20like%20to%20connect',
       color: 'from-blue-500 to-cyan-500',
       showCopy: true,
     },
